@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: demo-mysql
+    environment:
+      MYSQL_DATABASE: demo
+      MYSQL_USER: user
+      MYSQL_PASSWORD: login!234
+      MYSQL_ROOT_PASSWORD: login!234
+      TZ: Asia/Seoul
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
