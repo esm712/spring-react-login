@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.hokkom'
 version = '0.0.1-SNAPSHOT'
-description = 'demo'
+description = 'backend'
 
 java {
     toolchain {
