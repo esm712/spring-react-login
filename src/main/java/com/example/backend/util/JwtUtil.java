@@ -9,7 +9,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
-public class JWTUtil {
+public class JwtUtil {
 
     private static final SecretKey secretKey;
     private static final Long accessTokenExpiresIn;
