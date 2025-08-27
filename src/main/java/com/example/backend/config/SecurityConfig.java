@@ -1,8 +1,8 @@
 package com.example.backend.config;
 
 import com.example.backend.domain.jwt.service.JwtService;
+import com.example.backend.filter.JwtFilter;
 import com.example.backend.filter.LoginFilter;
-import com.example.backend.handler.LoginSuccessHandler;
 import com.example.backend.handler.RefreshTokenLogoutHandler;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -103,6 +103,10 @@ public class SecurityConfig {
         http
                 .logout(logout -> logout
                         .addLogoutHandler(new RefreshTokenLogoutHandler(jwtService)));
+
+        // JWT 필터
+        http
+                .addFilterBefore(new JwtFilter(), LogoutFilter.class);
 
         return http.build();
     }
