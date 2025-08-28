@@ -55,6 +55,7 @@ public class SecurityConfig {
     }
 
     // SecurityFilterChain
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // CSRF 보안 필터 disable
         http
